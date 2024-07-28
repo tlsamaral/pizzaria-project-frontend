@@ -2,8 +2,11 @@ import axios, { AxiosError } from 'axios'
 import { parseCookies } from 'nookies';
 import { AuthTokenError } from './errors/AuthTokenError';
 import { signOut } from '@/contexts/AuthContext';
+import { GetServerSidePropsContext, PreviewData } from 'next';
+import { ParsedUrlQuery } from 'querystring';
 
-export function setupAPIClient(ctx = undefined) {
+
+export function setupAPIClient(ctx: GetServerSidePropsContext<ParsedUrlQuery, PreviewData> | undefined = undefined) {
     let cookies = parseCookies(ctx);
 
     const api = axios.create({
