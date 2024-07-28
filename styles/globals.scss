@@ -17,6 +17,10 @@
     --red-900: #FF3F4B;
 }
 
+body {
+    background-color: var(--dark-700);
+}
+
 button {
     cursor: ponter;
 }
