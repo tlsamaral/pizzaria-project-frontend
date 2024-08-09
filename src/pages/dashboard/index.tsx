@@ -59,7 +59,7 @@ export default function Dashboard({ orders }: HomeProps) {
                 order_id
             }
         })
-
+        console.log(response.data)
         setModalItem(response.data)
         setModalVisible(true)
     }
@@ -95,7 +95,11 @@ export default function Dashboard({ orders }: HomeProps) {
 
                 {
                     modalVisible && (
-                        <ModalOrder />
+                        <ModalOrder
+                            isOpen={modalVisible}
+                            onRequestClose={handleCloseModal}
+                            order={modalItem}
+                        />
                     )
                 }
             </div>
