@@ -7,8 +7,9 @@ interface ModalOrderProps {
     isOpen: boolean
     onRequestClose: () => void
     order: OrderItemProps[] | undefined
+    handleFinishOrder: (id: string) => void
 }
-export function ModalOrder({ isOpen, onRequestClose, order }: ModalOrderProps) {
+export function ModalOrder({ isOpen, onRequestClose, order, handleFinishOrder }: ModalOrderProps) {
     const customStyles = {
         content: {
             top: '50%',
@@ -20,6 +21,7 @@ export function ModalOrder({ isOpen, onRequestClose, order }: ModalOrderProps) {
             transform: 'translate(-50%, -50%)',
         }
     }
+    const orderId = order ? order[0].order_id : ''
     return(
         <Modal 
             isOpen={isOpen} 
@@ -42,7 +44,7 @@ export function ModalOrder({ isOpen, onRequestClose, order }: ModalOrderProps) {
                         </section>
                     ))
                 }
-                <button className={styles.buttonOrder}>
+                <button className={styles.buttonOrder} onClick={() => handleFinishOrder(orderId)}>
                     Concluir pedido
                 </button>
             </div>
